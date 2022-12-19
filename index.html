@@ -954,39 +954,6 @@
 
         <script src="https://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
         <div class="exitProtection_overlay" data-modal="overlay" style="display: none;"></div>
-
-        <script>
-            // 背景オーバーレイを初期化
-            $('[data-modal="overlay"], [data-modal="content"]').hide();
-
-            // ブラウザの「戻る」ボタンにイベントを設定
-            history.pushState(null, null, null);
-            $(window).on("popstate", function (event) {
-                // 背景オーバーレイを表示
-                $('[data-modal="overlay"], [data-modal="content"]').fadeIn();
-                $('[data-modal="fixed"]').css('position', 'fixed');
-                $('body').css('overflow', 'hidden');
-
-                // ダイアログを表示
-                $("#dialog").dialog({
-                    // ダイアログの表示位置
-                    position: { my: "center center", at: "center center", }
-                });
-
-                // ダイアログを閉じる
-                $('div#dialog').on('dialogclose', function (event) {
-                    closeOverlay();
-                });
-            });
-
-            function closeOverlay() {
-                // 背景オーバーレイを非表示
-                $('[data-modal="overlay"], [data-modal="content"]').hide();
-                // ダイアログを閉じる
-                $("#dialog").dialog("close");
-                $('body').css('overflow', 'auto');
-            }
-        </script>
         <script type="text/javascript">
             $(function () {
                 $('a[href^="#"]').click(function () {
